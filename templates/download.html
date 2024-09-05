@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and Convert to PDF</title>
+</head>
+<style>
+        h1 {
+            color: rgb(128, 45, 0);
+            background-color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    h2 {
+            color: rgb(5, 194, 5);
+            background-color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+    
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .glowing-text {
+            font-size: 48px; /* Adjust font size as needed */
+            font-weight: bold;
+            color: #fff; /* Base text color */
+            text-shadow: 
+                0 0 5px #fff, /* Inner glow */
+                0 0 10px #fff, /* Inner glow */
+                0 0 15px #ff00ff, /* Outer glow with initial color */
+                0 0 20px #ff00ff, /* Outer glow with initial color */
+                0 0 30px #ff00ff, /* Outer glow with initial color */
+                0 0 40px #ff00ff, /* Outer glow with initial color */
+                0 0 50px #ff00ff; /* Outer glow with initial color */
+            animation: glow-animation 2s infinite, color-change 5s infinite;
+        }
+
+        @keyframes glow-animation {
+            0% {
+                text-shadow: 
+                    0 0 5px #fff, 
+                    0 0 10px #fff, 
+                    0 0 15px #ff00ff, 
+                    0 0 20px #ff00ff, 
+                    0 0 30px #ff00ff, 
+                    0 0 40px #ff00ff, 
+                    0 0 50px #ff00ff;
+            }
+            50% {
+                text-shadow: 
+                    0 0 10px #fff, 
+                    0 0 20px #fff, 
+                    0 0 30px #ff00ff, 
+                    0 0 40px #ff00ff, 
+                    0 0 50px #ff00ff, 
+                    0 0 60px #ff00ff, 
+                    0 0 70px #ff00ff;
+            }
+            100% {
+                text-shadow: 
+                    0 0 5px #fff, 
+                    0 0 10px #fff, 
+                    0 0 15px #ff00ff, 
+                    0 0 20px #ff00ff, 
+                    0 0 30px #ff00ff, 
+                    0 0 40px #ff00ff, 
+                    0 0 50px #ff00ff;
+            }
+        }
+
+        @keyframes color-change {
+            0% {
+                color: #ff00ff; /* Initial color */
+            }
+            25% {
+                color: #00ffff; /* Change to cyan */
+            }
+            50% {
+                color: #ffff00; /* Change to yellow */
+            }
+            75% {
+                color: #ff0000; /* Change to red */
+            }
+            100% {
+                color: #ff00ff; /* Back to initial color */
+            }
+        }
+
+    </style>
+<body>
+   
+             <div class="glowing-text">Image table convert to excel using python module<br><br></div>
+             <h2>Upload an image to convert it</h2>
+             <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="file">Choose file:</label>
+                <input type="file" id="file" name="file" required><br><br><br>
+                <button type="submit">Convert</button>
+             </form>
+             <h2><br><br>Available Files for Download</h2>
+                    {% for file in files %}
+                        <li>
+                            <a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a>
+                        </li>
+                    {% endfor %}
+                
+              
+      
+</body>
+</html>
