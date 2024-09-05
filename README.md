@@ -1,0 +1,1 @@
+# Extract_Table_data_from_Image_Using_python_open-cv_and_OCR
